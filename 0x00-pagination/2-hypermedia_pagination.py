@@ -2,7 +2,7 @@
 """Module to implement a simple pagination"""
 import csv
 import math
-from typing import List
+from typing import List, Dict
 
 
 def index_range(page: int, page_size: int) -> tuple:
@@ -67,7 +67,7 @@ class Server:
 
         return data_in_page
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """
         Function to retrieve a specific page of data from the dataset,
         along with hypermedia links for next and previous pages.
@@ -90,9 +90,6 @@ class Server:
             AssertionError: If the page or page_size arguments
             are not positive integers.
         """
-        assert isinstance(page, int) and page > 0
-        assert isinstance(page_size, int) and page_size > 0
-
         start_index = index_range(page, page_size)[0]
         end_index = index_range(page, page_size)[1]
         page_data = self.get_page(page, page_size)
