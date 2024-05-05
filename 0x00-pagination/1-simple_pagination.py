@@ -49,18 +49,20 @@ class Server:
 
         Arguments:
             page (int): The page number to retrieve. Default is 1.
-            page_size (int): The number of items to display per page. Default is 10.
+            page_size (int): The number of items to display per page.
+            Default is 10.
 
         Returns:
             A list of lists representing the data in the requested page.
 
         Raises:
-            AssertionError: If the page or page_size parameters are not positive integers.
+            AssertionError: If the page or page_size arguments
+            are not positive integers.
         """
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
 
         pagination = index_range(page, page_size)
-        data_in_page = self.dataset()[pagination[0] : pagination[1]]
+        data_in_page = self.dataset()[pagination[0]:pagination[1]]
 
         return data_in_page
