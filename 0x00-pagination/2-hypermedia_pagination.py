@@ -93,13 +93,14 @@ class Server:
         start_index = index_range(page, page_size)[0]
         end_index = index_range(page, page_size)[1]
         page_data = self.get_page(page, page_size)
+        total_pages = math.ceil(len(self.__dataset) / page_size)
         hypermedia_result = {
             "page_size": len(page_data),
             "page": page,
             "data": page_data,
             "next_page": page + 1 if end_index < len(self.__dataset) else None,
             "prev_page": page - 1 if start_index > 0 else None,
-            "total_page": math.ceil(len(self.__dataset) / page_size),
+            "total_page": total_pages,
         }
 
         return hypermedia_result
