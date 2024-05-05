@@ -90,6 +90,9 @@ class Server:
             AssertionError: If the page or page_size arguments
             are not positive integers.
         """
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
+
         start_index = index_range(page, page_size)[0]
         end_index = index_range(page, page_size)[1]
         page_data = self.get_page(page, page_size)
