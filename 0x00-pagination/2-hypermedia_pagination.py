@@ -71,12 +71,12 @@ class Server:
         """
         Function to retrieve a specific page of data from the dataset,
         along with hypermedia links for next and previous pages.
-    
+
         Arguments:
             page (int): The page number to retrieve. Default is 1.
             page_size (int): The number of items to display per page.
             Default is 10.
-    
+
         Returns:
             A dictionary with these key-value pairs:
             - page_size: the length of the returned dataset page
@@ -85,14 +85,11 @@ class Server:
             - next_page: number of the next page, None if no next page
             - prev_page: number of the previous page, None if no previous page
             - total_pages: total number of pages in the dataset as an integer
-    
+
         Raises:
             AssertionError: If the page or page_size arguments
             are not positive integers.
         """
-        assert isinstance(page, int) and page > 0
-        assert isinstance(page_size, int) and page_size > 0
-
         start_index = index_range(page, page_size)[0]
         end_index = index_range(page, page_size)[1]
         page_data = self.get_page(page, page_size)
@@ -102,7 +99,7 @@ class Server:
             "data": page_data,
             "next_page": page + 1 if end_index < len(self.__dataset) else None,
             "prev_page": page - 1 if start_index > 0 else None,
-            "total_page": math.ceil(len(self.__dataset) / page_size)
+            "total_page": math.ceil(len(self.__dataset) / page_size),
         }
 
         return hypermedia_result
