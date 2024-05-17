@@ -19,13 +19,13 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale() -> str | None:
+def get_locale() -> str:
     """
     Function to determines the best language match for the user's browser
     settings based on the app's configured languages.
 
     Returns:
-        str | None: The best matching language code, or None if no match is found.
+        str: The best matching language code, or None if no match is found.
     """
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
