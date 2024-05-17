@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
 from typing import Dict, Union
+from pytz import timezone, exceptions as tz_ex
 
 
 class Config:
@@ -43,6 +44,21 @@ def before_request() -> str:
     setattr(g, "user", get_user(logged_user))
 
 
+@babel.timezoneselector
+def get_timezone():
+    timezone_from_url = request.args.get("timezone")
+    try:
+        timezone(timezone_from_url).zone
+        if timezone_from_url:
+            return timezone_from_url
+
+        if g.user and g.user["timezone"]:
+            return g.user["timezone"]
+
+    except tz_ex.UnknownTimeZoneError:
+        return app.config["BABEL_DEFAULT_TIMEZONE"]
+
+
 @babel.localeselector
 def get_locale() -> str:
     """
@@ -70,12 +86,12 @@ def get_locale() -> str:
 def index() -> str:
     """
     Function as a route handler for the root ("/") URL.
-    It returns the rendered template '6-index.html'.
+    It returns the rendered template '7-index.html'.
 
     Returns:
-        str: The rendered HTML content of '6-index.html' template.
+        str: The rendered HTML content of '7-index.html' template.
     """
-    return render_template("6-index.html")
+    return render_template("7-index.html")
 
 
 if __name__ == "__main__":
