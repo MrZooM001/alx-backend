@@ -46,7 +46,14 @@ def before_request() -> str:
 
 
 @babel.timezoneselector
-def get_timezone():
+def get_timezone() -> str:
+    """
+    Function that determines the user's timezone based.
+    first checks if a timezone is provided in the URL query parameters.
+    then, checks if the user's timezone is set in the user data.
+    otherwise, it uses the default timezone from the app's configuration.
+    If the provided timezone is not valid, it returns the default timezone.
+    """
     timezone_from_url = request.args.get("timezone")
     try:
         timezone(timezone_from_url).zone
