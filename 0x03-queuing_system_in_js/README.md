@@ -7,7 +7,8 @@
 * **[2. Node Redis client and basic operations](1-redis_op.js)**
 * **[3. Node Redis client and async operations](2-redis_op_async.js)**
 * **[4. Node Redis client and advanced operations](4-redis_advanced_op.js)**
-* **[5. Node Redis client publisher and subscriber](5-subscriber.js)**
+* **[5. Node Redis client publisher and subscriber (Subscriber)](5-subscriber.js)**
+* **[5. Node Redis client publisher and subscriber (Publisher)](5-publisher.js)**
 * **[6. Create the Job creator]()**
 * **[7. Create the Job processor]()**
 * **[8. Track progress and errors with Kue: Create the Job creator]()**
