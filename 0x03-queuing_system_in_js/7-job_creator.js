@@ -49,7 +49,6 @@ const jobs = [
 
 const queue = createQueue();
 
-
 for (const job of jobs) {
   const notifyJob = queue.create('push_notification_code_2', job);
   notifyJob.on('complete', () => {
