@@ -21,8 +21,8 @@ const setNewSchool = (schoolName, value) => {
   });
 };
 
-const displaySchoolValue = (schoolName) => {
-  redisClient.get(schoolName, (error, result) => {
+const displaySchoolValue = async (schoolName) => {
+  await redisClient.get(schoolName, (error, result) => {
     if (error) {
       console.log(error);
       return;
