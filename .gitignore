@@ -1,5 +1,8 @@
 __pycache__/
+node_modules/
+redis-stable/
 *main.py
 *.csv
 venv/
 .venv/
+*.gz
